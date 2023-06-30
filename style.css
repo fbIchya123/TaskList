@@ -1,0 +1,53 @@
+
+@font-face {
+	font-family: 'Century Gothic'; 
+	src: url(/fonts/centurygothic.ttf); 
+}
+
+@font-face {
+	font-family: 'Century Gothic bold'; 
+	src: url(/fonts/centurygothic_bold.ttf); 
+}
+
+
+*{
+    font-family: 'Century Gothic';
+    /*all: unset;*/
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+button{
+    width: 80px;
+    height: 30px;
+    border: 0px;
+    margin: 5px;
+}
+
+input{
+    margin-bottom: 10px;
+    width: 210px;
+    height: 35px;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+}
+
+.form_auth{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.add_task{
+    display: flex;
+    flex-direction: column;
+}
