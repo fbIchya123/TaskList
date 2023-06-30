@@ -15,7 +15,7 @@ if (isset($_POST['delete'])){
 } else if (isset($_POST['status'])){
 
     //Запрос на получение статуса таска
-    $query = $pdo->prepare("SELECT status FROM tasks WHERE id = :id AND user_id = :user_id");
+    $query = $pdo->prepare("SELECT status FROM `tasks` WHERE id = :id AND user_id = :user_id");
     $query->execute([':id' => $_POST['status'], ':user_id' => $user_id]);
     $status = $query->fetch(PDO::FETCH_LAZY)->status;
 
@@ -29,7 +29,7 @@ if (isset($_POST['delete'])){
             break;
     }
 
-    //Изменение значения статуса в бд
+    //Занесение значения статуса в бд
     $query = $pdo->prepare("UPDATE `tasks` SET status = :status WHERE id = :id");
     $query->execute([':id' => $_POST['status'], ':status' => $status]);
     header("Location: main.php");

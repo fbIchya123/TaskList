@@ -10,7 +10,7 @@ $redirect = "main.php";
 
 
 //Запрос на проверку наличия аккаунта
-$query = $pdo->prepare("SELECT * FROM users WHERE name = :name AND password = :password"); 
+$query = $pdo->prepare("SELECT * FROM `users` WHERE name = :name AND password = :password"); 
 $query->execute([':name' => $login, ':password' => $password]);
 
 
