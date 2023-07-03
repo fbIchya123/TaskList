@@ -9,7 +9,6 @@ $user_id = $_SESSION['user_id'];
 if (isset($_POST['delete'])){
     $query = $pdo->prepare("DELETE FROM `tasks` WHERE id = :id AND user_id = :user_id");
     $query->execute([':id' => $_POST['delete'], ':user_id' => $user_id]);
-    header("Location: main.php");
 
 //Изменение статуса таска
 } else if (isset($_POST['status'])){
@@ -32,7 +31,6 @@ if (isset($_POST['delete'])){
     //Занесение значения статуса в бд
     $query = $pdo->prepare("UPDATE `tasks` SET status = :status WHERE id = :id");
     $query->execute([':id' => $_POST['status'], ':status' => $status]);
-    header("Location: main.php");
 }
 
-
+header("Location: main.php");

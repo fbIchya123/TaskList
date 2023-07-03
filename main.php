@@ -13,6 +13,16 @@ include 'connect_db.php';
         <title>Task Manager</title>
     </head>
     <body>
+        <form action="exit.php">
+            <button type="submit">Exit</button>
+        </form>
+        <h1>
+            <?php
+            echo $_SESSION['user_name'];
+            ?>
+        </h1>
+
+        <!--Блок с полем ввода описания таска и кнопками 'Dell ALL' и 'READY ALL'-->
         <div class="block1">
             <form action="general_script_task.php" method="post" class="form_auth">
                 <div class="add_task">
@@ -25,17 +35,18 @@ include 'connect_db.php';
                 </div>
             </form>
         </div>
+
+        <!--Блок с тасками-->
         <div class="block2">
                 <?php
+
                 //Запрос на вывод всех тасков пользователя
                 $query = $pdo->prepare("SELECT id, description, status FROM tasks WHERE user_id = :user_id");
                 $query->execute([':user_id' => $_SESSION['user_id']]);
                 
-                
-                
-
                 //Вывод тасков
                 while ($task = $query->fetch(PDO::FETCH_LAZY)){
+                    
                     //Цветовой индикатор статуса
                     switch ($task->status){
                         case "READY":

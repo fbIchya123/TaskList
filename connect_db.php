@@ -1,4 +1,5 @@
 <?php
+
 define('HOST', 'localhost');
 define('DB_NAME', 'tasklist');
 define('DB_USER', 'root');
@@ -10,5 +11,3 @@ try{
     echo $e->getMessage();
     die;
 }
-
-?>
