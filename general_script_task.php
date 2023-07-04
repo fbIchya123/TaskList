@@ -28,7 +28,7 @@ if(isset($user_id)){
     header("Location: main.php");
 
 //Переход на страницу регистрации/авторизации
-} elseif (empty($user_id)){
+} else {
     header("Location: ./");
 
 }

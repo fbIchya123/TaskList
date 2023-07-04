@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'connect_db.php';
+include 'all_user_tasks.php';
 ?>
 
 <!DOCTYPE html>
@@ -40,12 +41,8 @@ include 'connect_db.php';
         <div class="block2">
                 <?php
 
-                //Запрос на вывод всех тасков пользователя
-                $query = $pdo->prepare("SELECT id, description, status FROM tasks WHERE user_id = :user_id");
-                $query->execute([':user_id' => $_SESSION['user_id']]);
-                
                 //Вывод тасков
-                while ($task = $query->fetch(PDO::FETCH_LAZY)){
+                while ($task = $query_all_user_tasks->fetch(PDO::FETCH_LAZY)){
                     
                     //Цветовой индикатор статуса
                     switch ($task->status){
