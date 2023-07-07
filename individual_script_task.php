@@ -8,12 +8,12 @@ $user_id = $_SESSION['user_id'];
 if (isset($user_id)){
     
     //Удаление таска
-    if (isset($_POST['delete'])){
+    if (!empty($_POST['delete'])){
         $query = $pdo->prepare("DELETE FROM `tasks` WHERE id = :id AND user_id = :user_id");
         $query->execute([':id' => $_POST['delete'], ':user_id' => $user_id]);
 
     //Изменение статуса таска
-    } else if (isset($_POST['status'])){
+    } else if (!empty($_POST['status'])){
 
         //Запрос на получение статуса таска
         $query = $pdo->prepare("SELECT status FROM `tasks` WHERE id = :id AND user_id = :user_id");
