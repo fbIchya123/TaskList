@@ -11,12 +11,12 @@ $created_at = date("Y-m-d");
 if(isset($user_id)){
 
     //Добавление новой задачи в базу
-    if (isset($_POST['add_task'])){
+    if (!empty($_POST['add_task'])){
         $query = $pdo->prepare("INSERT INTO `tasks` (user_id, description, created_at, status) VALUES (:user_id, :description, :created_at, 'READY')"); 
         $query->execute([':user_id' => $user_id, ':description' => $description, ':created_at' => $created_at]);
 
     //Удаление всех задач
-    } else if (isset($_POST['remove_all'])){
+    } else if (!empty($_POST['remove_all'])){
         $query = $pdo->prepare("DELETE FROM `tasks` WHERE user_id = :user_id");
         $query->execute([':user_id' => $user_id]);
 
